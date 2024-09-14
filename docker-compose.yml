@@ -1,35 +1,35 @@
 version: '3'
 
 services:
-  container1:
+  dns-suricata-tcpdump:
     build: ./container1
-    container_name: container1
+    container_name: dns-suricata-tcpdump
     networks:
       - lab_net
     ports:
       - "5300:53/udp"
       - "2221:22"
   
-  container2:
+  nginx-suricata-tcpdump:
     build: ./container2
-    container_name: container2
+    container_name: nginx-suricata-tcpdump
     networks:
       - lab_net
     ports:
       - "80:80"
       - "2222:22"
   
-  container3:
+  nikto-nmap:
     build: ./container3
-    container_name: container3
+    container_name: nikto-nmap
     networks:
       - lab_net
     ports:
       - "2223:22"
   
-  jump_host:
+  web-jump-host:
     build: ./jump_host
-    container_name: jump_host
+    container_name: web-jump-host
     networks:
       - lab_net
     ports:
@@ -40,3 +40,4 @@ services:
 networks:
   lab_net:
     driver: bridge
+
