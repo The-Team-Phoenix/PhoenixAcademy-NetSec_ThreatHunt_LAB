@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  container1:
+    build: ./container1
+    container_name: container1
+    networks:
+      - lab_net
+    ports:
+      - "5300:53/udp"
+      - "2221:22"
+  
+  container2:
+    build: ./container2
+    container_name: container2
+    networks:
+      - lab_net
+    ports:
+      - "80:80"
+      - "2222:22"
+  
+  container3:
+    build: ./container3
+    container_name: container3
+    networks:
+      - lab_net
+    ports:
+      - "2223:22"
+  
+  jump_host:
+    build: ./jump_host
+    container_name: jump_host
+    networks:
+      - lab_net
+    ports:
+      - "3000:3000"
+    environment:
+      - WETTY_PORT=3000
+
+networks:
+  lab_net:
+    driver: bridge
