@@ -48,19 +48,19 @@ From this terminal, you can SSH into the other containers.
 
 Each container hosts different services that you can interact with from the jump host:
 
-## DNS, Suricata, Tcpdump:
+#### DNS, Suricata, Tcpdump:
 
 - Runs Suricata for network traffic analysis.
 - Provides DNS service.
 - SSH access via ssh -p 2221 jumpuser@localhost.
 
-## Nginx, Suricata, Tcpdump:
+#### Nginx, Suricata, Tcpdump:
 
 - Hosts an Nginx web server.
 - Runs Suricata for traffic monitoring.
 - SSH access via ssh -p 2222 jumpuser@localhost.
 
-##Nikto, Nmap, Tcpdump:
+#### Nikto, Nmap, Tcpdump:
 
 - Includes Nikto and Nmap for vulnerability scanning.
 - SSH access via ssh -p 2223 jumpuser@localhost.
