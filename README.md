@@ -25,21 +25,18 @@ To set up the lab environment on your machine, follow these steps:
 
 ### 1. Clone the Repository
 
-```bash
 git clone https://github.com/The-Team-Phoenix/PhoenixAcademy-NetSec_ThreatHunt_LAB.git
-cd PhoenixAcademy-NetSec_ThreatHunt_LAB```
+cd PhoenixAcademy-NetSec_ThreatHunt_LAB
 
 ### 2. Run the LAB
 
 Use Docker Compose to build and start the containers. Simply run the following command in the project directory:
 
-```bash
 docker compose up
 
 ### 3. Access the Web-Based Jump Host
 Once the containers are up and running, you can access the jump host via the web-based terminal at:
 
-```bash
 http://localhost:3000
 
 Username: jumpuser
@@ -72,8 +69,10 @@ Each container hosts different services that you can interact with from the jump
 
 To stop the lab, simply run:
 
-```bash
 docker compose down
+
+This will stop and remove the running containers.
+
 
 ### 6. Requirements
 
@@ -85,6 +84,3 @@ Feel free to contribute to this repository by opening issues or submitting pull 
 
 ### 8. License
 This project is licensed under the MIT License
-
-
-This will stop and remove the running containers.
