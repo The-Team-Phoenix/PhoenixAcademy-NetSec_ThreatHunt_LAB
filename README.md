@@ -27,7 +27,7 @@ To set up the lab environment on your machine, follow these steps:
 
 ```bash
 git clone https://github.com/The-Team-Phoenix/PhoenixAcademy-NetSec_ThreatHunt_LAB.git
-cd PhoenixAcademy-NetSec_ThreatHunt_LAB
+cd PhoenixAcademy-NetSec_ThreatHunt_LAB```
 
 ### 2. Run the LAB
 
