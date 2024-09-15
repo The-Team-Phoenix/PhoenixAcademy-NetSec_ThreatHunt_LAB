@@ -1,40 +1,37 @@
-services:
-  dns-suricata-tcpdump:
-    build: ./container1
-    container_name: dns-suricata-tcpdump
-    networks:
-      - lab_net
-    ports:
-      - "5300:53/udp"
-      - "2221:22"
+version: '3.8'
 
-  nginx-suricata-tcpdump:
-    build: ./container2
-    container_name: nginx-suricata-tcpdump
-    networks:
-      - lab_net
+services:
+  jumphost:
+    image: shamimrezasohag/jump-host:latest
+    container_name: jumphost
     ports:
-      - "80:80"
-      - "2222:22"
+      - "3000:3000"  # Wetty web access for SSH via browser
+      - "2222:22"    # SSH access to the Jump Host
+    networks:
+      - jump_network
+    depends_on:
+      - dns-suricata
+      - nginx-suricata
+      - nikto-nmap
+
+  dns-suricata:
+    image: shamimrezasohag/dns-suricata-tcpdump:latest
+    container_name: dns-suricata
+    networks:
+      - jump_network
+
+  nginx-suricata:
+    image: shamimrezasohag/nginx-suricata-tcpdump:latest
+    container_name: nginx-suricata
+    networks:
+      - jump_network
 
   nikto-nmap:
-    build: ./container3
+    image: shamimrezasohag/nikto-nmap:latest
     container_name: nikto-nmap
     networks:
-      - lab_net
-    ports:
-      - "2223:22"
-
-  web-jump-host:
-    build: ./jump_host
-    container_name: web-jump-host
-    networks:
-      - lab_net
-    ports:
-      - "3000:3000"
-    environment:
-      - WETTY_PORT=3000
+      - jump_network
 
 networks:
-  lab_net:
+  jump_network:
     driver: bridge
